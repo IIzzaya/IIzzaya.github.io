@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Unityの插件Liquid Physics 2D目录结构剖析(1)"
-categories: [Unity, Unity Plugin]
+categories: [Unity, UnityPlugin]
 tags: [Unity, LP2D]
 last_updated:
 ---
