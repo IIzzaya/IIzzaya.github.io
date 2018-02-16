@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Express入门之路由Router"
-categories: [Javascript, Express]
-tags: [es6, javascript, beginners, webdev, programming, router]
+categories: [Javascript, Node.js, Express]
+tags: [es6, node.js, router]
 last_updated:
 ---
 

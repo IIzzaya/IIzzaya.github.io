@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Unityの插件Liquid Physics 2D脚本结构剖析(2)"
-categories: [Unity, Unity插件]
+categories: [Unity, Unity Plugin]
 tags: [Unity, LP2D]
 last_updated:
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: "Javascript入门之变量与数组"
 categories: [Javascript]
-tags: [es6, javascript, beginners, webdev, programming]
+tags: [es6, js, beginners]
 last_updated:
 ---
 

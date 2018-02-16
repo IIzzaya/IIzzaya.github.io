@@ -2,7 +2,7 @@
 layout: post
 title: "Javascript语法小记===与=="
 categories: [Javascript]
-tags: [es6, javascript, programming]
+tags: [js]
 last_updated:
 ---
 

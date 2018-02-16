@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hello World!"
-categories: [uncategorized]
+categories: [Uncategorized]
 tags: [untagged]
 last_updated:
 ---

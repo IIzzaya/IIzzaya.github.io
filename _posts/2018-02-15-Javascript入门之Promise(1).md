@@ -2,7 +2,7 @@
 layout: post
 title: "Javascript入门之Promise(1)"
 categories: [Javascript]
-tags: [es6, javascript, programming, promise]
+tags: [es6, js, promise]
 last_updated:
 ---
 
