@@ -17,8 +17,6 @@ const names = JSON.stringify(PROFILE.rotatingNames);
   let ti = 0, ci = targets[0].length, deleting = true;
 
   function tick() {
-    const word = targets[ti];
-    el.textContent = word.slice(0, ci);
     let delay;
     if (deleting) {
       ci--;
@@ -29,6 +27,8 @@ const names = JSON.stringify(PROFILE.rotatingNames);
       delay = 110;
       if (ci >= targets[ti].length) { deleting = true; delay = 2100; }
     }
+    // 先推进状态再渲染，保证「打完整词 → 停顿」期间显示的是完整词
+    el.textContent = targets[ti].slice(0, ci);
     setTimeout(tick, delay);
   }
   setTimeout(tick, 1800);
