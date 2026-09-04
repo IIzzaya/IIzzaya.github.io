@@ -142,6 +142,8 @@
 
   window.addEventListener('open-palette', open);
   input.addEventListener('input', (e) => filter((e.target as HTMLInputElement).value));
+  // 点击面板以外的遮罩区域关闭
+  document.querySelector('#command-palette [data-close]')?.addEventListener('click', close);
   window.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
