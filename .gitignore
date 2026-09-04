@@ -1,18 +1,24 @@
-*.gem
-.bundle
-.sass-cache
-_site
-Gemfile.lock
+# build output
+dist/
+# generated types
+.astro/
 
-Thumbs.db
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
 .DS_Store
+Thumbs.db
 
-.rbenv-version
-.rvmrc
-/node_modules
-/yarn-error.log
-yarn.lock
-
-# Ignore Yard Doc
-/doc
-.yardoc/
+# jetbrains / vscode local
+.idea/
+.vscode/*
+!.vscode/extensions.json

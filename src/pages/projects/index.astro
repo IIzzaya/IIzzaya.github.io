@@ -1,0 +1,18 @@
+---
+/** 项目画廊 */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { PROJECTS } from '../../data/projects';
+---
+
+<BaseLayout title="项目画廊" description="可以直接在浏览器里玩的 Web 项目合集。">
+  <section class="py-12">
+    <h1 class="text-3xl font-bold text-zinc-100"><span class="font-mono text-terminal glow-text">$</span> 项目画廊</h1>
+    <p class="mt-3 max-w-2xl text-zinc-400">
+      这里是我做的、可以直接在浏览器里玩/用的 Web 项目。点击「开始玩」站内即开，喜欢的话去 GitHub 点个星。
+    </p>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      {PROJECTS.map((p) => <ProjectCard {...p} />)}
+    </div>
+  </section>
+</BaseLayout>

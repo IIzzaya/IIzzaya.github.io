@@ -1,0 +1,18 @@
+---
+title: "Mysql跳跃选择多条条目"
+pubDate: 2018-03-26
+description: "Mysql语句中，选择多条条目的语句一般有两种写法："
+tags: [database, beginners, mysql]
+---
+
+> [https://stackoverflow.com/questions/544750/how-to-select-multiple-records-row-from-a-column-in-mysql](https://stackoverflow.com/questions/544750/how-to-select-multiple-records-row-from-a-column-in-mysql)
+
+Mysql语句中，选择多条条目的语句一般有两种写法：
+
+~~~mysql
+SELECT * FROM 'table' WHERE id = '1' OR id = '3' ...
+SELECT * FROM 'table' WHERE id IN ('1', '3', ...)
+~~~
+
+后者比前者快越10倍。
+

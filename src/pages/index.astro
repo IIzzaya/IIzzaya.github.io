@@ -1,0 +1,81 @@
+---
+/** 首页：Hero 名字轮换 + 最新文章 + 精选项目 */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TypeWriter from '../components/TypeWriter.astro';
+import PostCard from '../components/PostCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { PROFILE } from '../data/profile';
+import { PROJECTS } from '../data/projects';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const latest = posts.slice(0, 5);
+const featured = PROJECTS.filter((p) => p.featured);
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <section class="py-16 sm:py-24">
+    <p class="font-mono text-sm text-zinc-500">// 你好，欢迎来到我的自留地</p>
+    <h1 class="mt-4 text-4xl font-bold tracking-tight text-zinc-100 sm:text-5xl">
+      Hi, I'm <TypeWriter />
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">{PROFILE.tagline}</p>
+
+    <div class="mt-8 flex flex-wrap items-center gap-4">
+      <a
+        href="/projects/"
+        class="glow-box rounded-md border border-terminal/50 bg-terminal/10 px-5 py-2.5 font-medium text-terminal transition-colors hover:bg-terminal/20"
+      >
+        浏览项目画廊
+      </a>
+      <a
+        href="/blog/"
+        class="rounded-md border border-zinc-700 px-5 py-2.5 font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
+      >
+        阅读博客
+      </a>
+      <span class="hidden items-center gap-1.5 font-mono text-xs text-zinc-600 sm:flex">
+        按
+        <kbd class="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 text-zinc-400">Ctrl</kbd>
+        +
+        <kbd class="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 text-zinc-400">K</kbd>
+        快速跳转
+      </span>
+    </div>
+  </section>
+
+  <!-- 精选项目 -->
+  <section class="pb-6">
+    <div class="flex items-baseline justify-between">
+      <h2 class="text-xl font-semibold text-zinc-100"><span class="font-mono text-terminal">$</span> 精选项目</h2>
+      <a href="/projects/" class="text-sm text-zinc-500 transition-colors hover:text-terminal">全部项目 →</a>
+    </div>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2">
+      {featured.map((p) => <ProjectCard {...p} />)}
+    </div>
+  </section>
+
+  <!-- 最新文章 -->
+  <section class="pt-10">
+    <div class="flex items-baseline justify-between">
+      <h2 class="text-xl font-semibold text-zinc-100"><span class="font-mono text-terminal">$</span> 最近更新</h2>
+      <a href="/blog/" class="text-sm text-zinc-500 transition-colors hover:text-terminal">全部文章 →</a>
+    </div>
+    <div class="mt-2">
+      {
+        latest.map((post) => (
+          <PostCard
+            title={post.data.title}
+            href={`/blog/${post.id}/`}
+            date={post.data.pubDate}
+            tags={post.data.tags}
+            description={post.data.description}
+          />
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

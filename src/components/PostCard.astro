@@ -1,0 +1,43 @@
+---
+/** 博客列表条目（首页与博客页共用） */
+interface Props {
+  title: string;
+  href: string;
+  date: Date;
+  tags: string[];
+  description?: string;
+}
+const { title, href, date, tags, description } = Astro.props;
+
+const fmt = (d: Date) =>
+  `${d.getUTCFullYear()} 年 ${d.getUTCMonth() + 1} 月 ${d.getUTCDate()} 日`;
+---
+
+<article class="group border-b border-zinc-900 py-5">
+  <a href={href} class="block">
+    <div class="flex items-baseline justify-between gap-4">
+      <h3 class="font-medium text-zinc-200 transition-colors group-hover:text-terminal">
+        {title}
+      </h3>
+      <time class="shrink-0 font-mono text-xs text-zinc-600" datetime={date.toISOString()}>
+        {fmt(date)}
+      </time>
+    </div>
+    {
+      description && (
+        <p class="mt-1.5 line-clamp-2 text-sm leading-relaxed text-zinc-500">{description}</p>
+      )
+    }
+    {
+      tags.length > 0 && (
+        <div class="mt-2.5 flex flex-wrap gap-2">
+          {tags.map((t) => (
+            <span class="rounded border border-zinc-800 bg-zinc-900/50 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500">
+              #{t}
+            </span>
+          ))}
+        </div>
+      )
+    }
+  </a>
+</article>

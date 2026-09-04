@@ -1,0 +1,47 @@
+---
+/** 全站基础布局：head 元信息 + 终端页头 + 漂浮图标 + 页脚 + Ctrl+K 面板 */
+import '../styles/global.css';
+import TerminalHeader from '../components/TerminalHeader.astro';
+import FloatingTechIcons from '../components/FloatingTechIcons.astro';
+import Footer from '../components/Footer.astro';
+import CommandPalette from '../components/CommandPalette.astro';
+import { SITE } from '../data/site';
+
+interface Props {
+  /** 页面标题（自动拼接站名） */
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE.description } = Astro.props;
+const pageTitle = title ? `${title} · ${SITE.title}` : `${SITE.title} · 博客与项目画廊`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#09090b" />
+  </head>
+  <body class="min-h-screen bg-zinc-950 font-sans text-zinc-100 antialiased">
+    <FloatingTechIcons />
+    <TerminalHeader />
+    <main class="relative z-10 mx-auto max-w-3xl px-4 pb-10 sm:px-6 xl:max-w-5xl xl:px-0">
+      <slot />
+    </main>
+    <Footer />
+    <CommandPalette />
+  </body>
+</html>

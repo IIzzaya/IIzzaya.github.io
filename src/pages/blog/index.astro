@@ -1,0 +1,43 @@
+---
+/** 博客列表：按年份分组倒序 */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const byYear = new Map<number, typeof posts>();
+for (const p of posts) {
+  const y = p.data.pubDate.getUTCFullYear();
+  if (!byYear.has(y)) byYear.set(y, []);
+  byYear.get(y)!.push(p);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+
+<BaseLayout title="博客" description="全部博文，按时间倒序。">
+  <section class="py-12">
+    <h1 class="text-3xl font-bold text-zinc-100"><span class="font-mono text-terminal glow-text">$</span> 博客 <span class="font-mono text-base text-zinc-600">// {posts.length} 篇</span></h1>
+
+    {
+      years.map((y) => (
+        <div class="mt-10">
+          <h2 class="font-mono text-lg text-zinc-500">{y}</h2>
+          <div class="mt-2">
+            {byYear.get(y)!.map((post) => (
+              <PostCard
+                title={post.data.title}
+                href={`/blog/${post.id}/`}
+                date={post.data.pubDate}
+                tags={post.data.tags}
+                description={post.data.description}
+              />
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </section>
+</BaseLayout>

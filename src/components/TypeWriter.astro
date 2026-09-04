@@ -1,0 +1,35 @@
+---
+/** Hero 名字打字机轮换：izaya / イザヤ / IIzzaya …（列表来自 profile.ts） */
+import { PROFILE } from '../data/profile';
+
+const names = JSON.stringify(PROFILE.rotatingNames);
+---
+
+<span class="text-terminal glow-text">
+  <span id="typewriter-target" class="font-semibold">izaya</span><span
+    class="ml-1 inline-block h-[0.95em] w-[3px] translate-y-[2px] bg-terminal animate-cursor-blink"
+    aria-hidden="true"></span>
+</span>
+
+<script is:inline define:vars={{ names }}>
+  const targets = JSON.parse(names);
+  const el = document.getElementById('typewriter-target');
+  let ti = 0, ci = targets[0].length, deleting = true;
+
+  function tick() {
+    const word = targets[ti];
+    el.textContent = word.slice(0, ci);
+    let delay;
+    if (deleting) {
+      ci--;
+      delay = 65;
+      if (ci <= 0) { deleting = false; ti = (ti + 1) % targets.length; delay = 350; }
+    } else {
+      ci++;
+      delay = 110;
+      if (ci >= targets[ti].length) { deleting = true; delay = 2100; }
+    }
+    setTimeout(tick, delay);
+  }
+  setTimeout(tick, 1800);
+</script>

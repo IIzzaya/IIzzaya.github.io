@@ -1,0 +1,157 @@
+---
+/** Ctrl+K 命令面板：构建期索引 /search-index.json，运行时懒加载检索 */
+---
+
+<div id="command-palette" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-label="快速导航">
+  <!-- 遮罩 -->
+  <div class="palette-overlay absolute inset-0 bg-black/60 backdrop-blur-sm" data-close></div>
+
+  <div class="absolute left-1/2 top-[18vh] w-[min(36rem,92vw)] -translate-x-1/2">
+    <div class="overflow-hidden rounded-xl border border-zinc-700 bg-zinc-950/95 shadow-2xl shadow-black/60">
+      <div class="flex items-center gap-2 border-b border-zinc-800 px-4">
+        <span class="font-mono text-sm text-terminal glow-text">&gt;</span>
+        <input
+          id="palette-input"
+          type="text"
+          placeholder="搜索页面、项目、文章…"
+          autocomplete="off"
+          spellcheck="false"
+          class="w-full bg-transparent py-3.5 text-sm text-zinc-100 outline-none placeholder:text-zinc-600"
+        />
+        <kbd class="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500">ESC</kbd>
+      </div>
+      <ul id="palette-list" class="max-h-[50vh] overflow-y-auto py-2" role="listbox"></ul>
+      <div class="flex items-center justify-between border-t border-zinc-800 px-4 py-2 font-mono text-[10px] text-zinc-600">
+        <span>↑↓ 选择 · ↵ 打开</span>
+        <span>iizzaya@github:~$</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #command-palette:not(.hidden) .palette-overlay {
+    animation: palette-fade 0.15s ease-out;
+  }
+  @keyframes palette-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+
+<script>
+  type Item = { title: string; href: string; type: string; hint?: string };
+
+  const overlay = document.getElementById('command-palette')!;
+  const input = document.getElementById('palette-input') as HTMLInputElement;
+  const list = document.getElementById('palette-list')!;
+  let index: Item[] = [];
+  let filtered: Item[] = [];
+  let active = 0;
+  let loaded = false;
+
+  const badgeColor: Record<string, string> = {
+    页面: 'text-sky-400 border-sky-400/30',
+    项目: 'text-fuchsia-400 border-fuchsia-400/30',
+    文章: 'text-terminal border-terminal/30',
+  };
+
+  async function ensureIndex() {
+    if (loaded) return;
+    loaded = true;
+    try {
+      const res = await fetch('/search-index.json');
+      index = (await res.json()).items ?? [];
+    } catch {
+      index = [];
+    }
+  }
+
+  function render() {
+    list.innerHTML = '';
+    if (filtered.length === 0) {
+      const empty = document.createElement('li');
+      empty.className = 'px-4 py-6 text-center text-sm text-zinc-600';
+      empty.textContent = '没有匹配结果 command not found';
+      list.appendChild(empty);
+      return;
+    }
+    filtered.forEach((item, i) => {
+      const li = document.createElement('li');
+      li.role = 'option';
+      li.className =
+        'flex items-center gap-3 px-4 py-2.5 cursor-pointer text-sm ' +
+        (i === active ? 'bg-zinc-900' : '');
+      const badge = document.createElement('span');
+      badge.className =
+        'shrink-0 rounded border px-1.5 py-0.5 font-mono text-[10px] ' +
+        (badgeColor[item.type] ?? 'text-zinc-400 border-zinc-700');
+      badge.textContent = item.type;
+      const title = document.createElement('span');
+      title.className = 'truncate text-zinc-200';
+      title.textContent = item.title;
+      li.append(badge, title);
+      if (item.hint) {
+        const hint = document.createElement('span');
+        hint.className = 'ml-auto shrink-0 font-mono text-xs text-zinc-600';
+        hint.textContent = item.hint;
+        li.appendChild(hint);
+      }
+      li.addEventListener('click', () => go(item.href));
+      li.addEventListener('mousemove', () => { active = i; highlight(); });
+      list.appendChild(li);
+    });
+  }
+
+  function highlight() {
+    [...list.children].forEach((el, i) => {
+      el.classList.toggle('bg-zinc-900', i === active);
+    });
+  }
+
+  function filter(q: string) {
+    const query = q.trim().toLowerCase();
+    filtered = query
+      ? index.filter(
+          (it) =>
+            it.title.toLowerCase().includes(query) ||
+            (it.hint ?? '').toLowerCase().includes(query)
+        )
+      : index.slice(0, 12);
+    active = 0;
+    render();
+  }
+
+  function go(href: string) {
+    close();
+    location.href = href;
+  }
+
+  function open() {
+    overlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    input.value = '';
+    ensureIndex().then(() => filter(''));
+    requestAnimationFrame(() => input.focus());
+  }
+
+  function close() {
+    overlay.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  window.addEventListener('open-palette', open);
+  input.addEventListener('input', (e) => filter((e.target as HTMLInputElement).value));
+  window.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      overlay.classList.contains('hidden') ? open() : close();
+      return;
+    }
+    if (overlay.classList.contains('hidden')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(active + 1, filtered.length - 1); highlight(); }
+    if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(active - 1, 0); highlight(); }
+    if (e.key === 'Enter' && filtered[active]) go(filtered[active].href);
+  });
+</script>

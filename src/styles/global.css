@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "JetBrains Mono", Consolas,
+    "Liberation Mono", monospace;
+
+  /* 终端绿主强调色 */
+  --color-terminal: #4ade80;
+  --color-terminal-dim: #22c55e;
+
+  --animate-cursor-blink: cursor-blink 1.1s step-end infinite;
+  --animate-float-a: float-y 16s ease-in-out infinite;
+  --animate-float-b: float-y 22s ease-in-out infinite reverse;
+  --animate-float-c: float-y 27s ease-in-out infinite;
+
+  @keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-22px) rotate(4deg); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* 深色基底上的细微网格纹理 */
+  background-image:
+    linear-gradient(rgba(63, 63, 70, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(63, 63, 70, 0.14) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+::selection {
+  background: rgba(74, 222, 128, 0.28);
+}
+
+/* ---------- 终端绿辉光 ---------- */
+@utility glow-text {
+  text-shadow:
+    0 0 5px rgba(74, 222, 128, 0.5),
+    0 0 20px rgba(74, 222, 128, 0.35);
+}
+
+@utility glow-box {
+  box-shadow:
+    0 0 12px rgba(74, 222, 128, 0.18),
+    0 0 32px rgba(74, 222, 128, 0.08);
+}
+
+/* ---------- 博客正文排版（无 typography 插件，手写深色样式） ---------- */
+.prose-blog {
+  color: var(--color-zinc-300);
+  line-height: 1.85;
+  font-size: 1rem;
+}
+.prose-blog h1, .prose-blog h2, .prose-blog h3, .prose-blog h4 {
+  color: var(--color-zinc-100);
+  font-weight: 600;
+  margin: 2rem 0 0.9rem;
+  line-height: 1.35;
+}
+.prose-blog h1 { font-size: 1.65rem; }
+.prose-blog h2 { font-size: 1.35rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--color-zinc-800); }
+.prose-blog h3 { font-size: 1.15rem; }
+.prose-blog p { margin: 0.9rem 0; }
+.prose-blog a {
+  color: var(--color-terminal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(74, 222, 128, 0.4);
+}
+.prose-blog a:hover { text-decoration-color: var(--color-terminal); }
+.prose-blog strong { color: var(--color-zinc-100); }
+.prose-blog ul, .prose-blog ol { margin: 0.9rem 0; padding-left: 1.6rem; }
+.prose-blog ul { list-style: disc; }
+.prose-blog ol { list-style: decimal; }
+.prose-blog li { margin: 0.35rem 0; }
+.prose-blog li::marker { color: var(--color-terminal-dim); }
+.prose-blog blockquote {
+  margin: 1.2rem 0;
+  padding: 0.35rem 1.1rem;
+  border-left: 3px solid var(--color-terminal-dim);
+  background: rgba(74, 222, 128, 0.05);
+  border-radius: 0 0.4rem 0.4rem 0;
+  color: var(--color-zinc-400);
+}
+.prose-blog blockquote p { margin: 0.45rem 0; }
+.prose-blog code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-zinc-900);
+  border: 1px solid var(--color-zinc-800);
+  border-radius: 0.3rem;
+  padding: 0.1em 0.4em;
+  color: #a5f3c4;
+}
+.prose-blog pre {
+  margin: 1.2rem 0;
+  padding: 1rem 1.2rem;
+  background: #0a0a0c;
+  border: 1px solid var(--color-zinc-800);
+  border-radius: 0.6rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.prose-blog pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--color-zinc-200);
+}
+.prose-blog img {
+  margin: 1.2rem auto;
+  border-radius: 0.6rem;
+  border: 1px solid var(--color-zinc-800);
+  max-width: 100%;
+  height: auto;
+}
+.prose-blog hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid var(--color-zinc-800);
+}
+.prose-blog table {
+  margin: 1.2rem 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.925rem;
+}
+.prose-blog th, .prose-blog td {
+  border: 1px solid var(--color-zinc-800);
+  padding: 0.45rem 0.75rem;
+  text-align: left;
+}
+.prose-blog th { background: var(--color-zinc-900); color: var(--color-zinc-100); }
+
+/* astro-shiki 代码块（构建期高亮，深色主题） */
+.prose-blog pre.astro-code {
+  background: #0a0a0c !important;
+}
+.prose-blog pre.astro-code span {
+  color: var(--shiki-light) !important;
+}
+
+/* 漂浮图标 */
+.float-icon {
+  position: absolute;
+  opacity: 0.07;
+  filter: blur(0.6px) drop-shadow(0 0 18px rgba(74, 222, 128, 0.55));
+  pointer-events: none;
+  user-select: none;
+}

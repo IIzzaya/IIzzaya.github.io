@@ -1,0 +1,29 @@
+---
+/** 标签总览：标签云 + 计数 */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = await getCollection('blog');
+const counts = new Map<string, number>();
+for (const p of posts) for (const t of p.data.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+---
+
+<BaseLayout title="标签" description="全部文章标签。">
+  <section class="py-12">
+    <h1 class="text-3xl font-bold text-zinc-100"><span class="font-mono text-terminal glow-text">$</span> 标签 <span class="font-mono text-base text-zinc-600">// {tags.length} 个</span></h1>
+    <div class="mt-8 flex flex-wrap gap-3">
+      {
+        tags.map(([tag, count]) => (
+          <a
+            href={`/tags/${tag}/`}
+            class="rounded-md border border-zinc-800 bg-zinc-900/40 px-3 py-1.5 font-mono text-sm text-zinc-400 transition-colors hover:border-terminal/50 hover:text-terminal"
+          >
+            #{tag}
+            <span class="ml-1 text-xs text-zinc-600">{count}</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
