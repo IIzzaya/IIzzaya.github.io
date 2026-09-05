@@ -53,4 +53,17 @@ export const PROJECTS: GalleryProject[] = [
     embed: true,
     sourceUrl: 'https://github.com/IIzzaya/project-3d-pixel',
   },
+  {
+    slug: 'temple',
+    repo: 'project-temple',
+    name: '木构 MOKUZŌ · 净土堂建筑解构',
+    tagline: '净土寺净土堂木构建筑的交互式 3D 结构解构档案。',
+    description:
+      '依据净土寺净土堂手绘详图复原的交互式建筑研究模型：整体、分层拆解与五类构件（屋面椽架 / 斗栱出挑 / 柱与贯梁 / 格扇板壁 / 台基地栿）均可独立查看，拆解进度连续可调，构件可显隐与点击选择；支持拖动旋转、滚轮缩放、透视/正视/俯视切换、自动旋转与线框模式。参数化几何由 three.js 实时渲染，榫卯与斗栱承托关系按图纸示意表达。',
+    tags: ['React 19', 'three.js', 'TypeScript', 'WebGL'],
+    accent: '#e0a458',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-temple',
+  },
 ];
