@@ -85,7 +85,7 @@ const featuredNewestFirst = [...featured].reverse();
       role="region"
       aria-label="精选项目，可左右滚动浏览"
       tabindex="0"
-      class="featured-scroller -mx-4 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-4 px-4 pb-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terminal/40 sm:-mx-6 sm:scroll-px-6 sm:px-6 xl:mx-0 xl:scroll-px-0 xl:px-0"
+      class="featured-scroller -mx-4 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-4 px-4 pb-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terminal/40 sm:-mx-6 sm:scroll-px-6 sm:px-6 xl:-mx-16 xl:scroll-px-16 xl:px-16"
     >
       {featuredNewestFirst.map((p) => <ProjectCard compact {...p} playLabel="Play" sourceLabel="Source Code" />)}
     </div>
@@ -117,15 +117,16 @@ const featuredNewestFirst = [...featured].reverse();
     .featured-scroller {
       scrollbar-width: thin;
       scrollbar-color: var(--color-zinc-700) transparent;
-      /* 渐隐宽度 12px 必须小于 px-4 的 16px 留白，否则会盖住静止卡片的边框 */
+      /* 不变量：渐隐宽度必须小于各断点的边缘留白（移动 16px / sm 24px / xl 64px），
+         渐隐只会盖到被裁切的露边卡片，静止完整卡片的边框永远不被遮挡 */
       -webkit-mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
       mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
     }
-    /* xl 起卡片与内容栏左缘对齐、无留白，关闭渐隐避免遮挡静止卡片边框 */
+    /* xl 留白放大到 64px（-mx-16 px-16），渐隐可相应加宽、更明显 */
     @media (min-width: 80rem) {
       .featured-scroller {
-        -webkit-mask-image: none;
-        mask-image: none;
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 20px), transparent);
+        mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 20px), transparent);
       }
     }
     .featured-scroller::-webkit-scrollbar {
