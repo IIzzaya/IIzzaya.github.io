@@ -104,4 +104,18 @@ export const PROJECTS: GalleryProject[] = [
     embed: true,
     sourceUrl: 'https://github.com/IIzzaya/project-qing-font',
   },
+  {
+    slug: 'bof4',
+    repo: 'project-bof4-storyline',
+    name: '不变之物 · BoF IV Memory Atlas',
+    tagline: '以原作四章串联龙与佛乌鲁双线旅程的《龙战士 IV》剧情回忆画廊。',
+    description:
+      '中文《龙战士 IV》全剧情回忆档案：70 个剧情节点（含双结局）、50 处地点、25 位带原作像素头像的人物与 8 段旅途拾遗。可拖动缩放的幻想世界地图支持点击地点与双线路线叠加；按章节和视角浏览、人物与事件互跳、重访同一地点，事件锚点可直接分享（如 /#m01）。内容整理自独立研究底稿，感想与原作事实分开标识，非官方粉丝回顾。',
+    tags: ['React 19', 'Vinext', 'TypeScript', '交互地图'],
+    accent: '#5e9c76',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-bof4-storyline',
+    screenshot: '/assets/images/projects/bof4.png',
+  },
 ];
