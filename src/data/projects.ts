@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'wire-frame',
+    repo: 'project-wire-frame',
+    name: 'Perpetual · 生成机械实验台',
+    tagline: '把齿轮、活塞与摆锤组合成永续循环的生成艺术机械装置。',
+    description:
+      '生成艺术机械编辑器：六类程序化部件——传动齿轮、惯性飞轮、往复活塞、谐振摆锤、涡轮转子、行星轨道——共享同一循环时钟，拖动布局、两两连线即可呈现动力流动。支持画布平移缩放与网格吸附、转数 / 相位 / 方向参数调节、复制与撤销重做，内置三个种子化预设，输入种子可重建对应构图。默认 12 秒循环，可暂停、定位进度与调速，「导出作品」输出 2200 × 1520 的当前帧 PNG；遵循系统的减少动态效果偏好。',
+    tags: ['React 19', 'Vinext', 'TypeScript', 'Canvas 2D'],
+    accent: '#df623b',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-wire-frame',
+  },
+  {
     slug: 'bof4',
     repo: 'project-bof4-storyline',
     name: '不变之物 · BoF IV Memory Atlas',
