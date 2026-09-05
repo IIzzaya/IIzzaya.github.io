@@ -90,11 +90,12 @@ const featuredNewestFirst = [...featured].reverse();
       {featuredNewestFirst.map((p) => <ProjectCard compact {...p} playLabel="Play" sourceLabel="Source Code" />)}
     </div>
 
-    <!-- 自定义滚动指示条：与卡片内容区等宽（base/sm 抵消主栏 padding；xl 卡片静止位即栏缘，无需内缩），悬停/滚动/拖动时淡入 -->
+    <!-- 自定义滚动指示条：与卡片内容区等宽（base/sm 抵消主栏 padding；xl 卡片静止位即栏缘，无需内缩），悬停/滚动/拖动时淡入；
+         h-8 的透明命中区配合 -mt-1 保持视觉轨道位置不变（命中区为视觉轨道的 2 倍高，便于点击与拖拽） -->
     <div
       data-featured-scrollbar
       aria-hidden="true"
-      class="featured-scrollbar mx-4 mt-1 flex h-4 items-center sm:mx-6 xl:mx-0"
+      class="featured-scrollbar -mt-1 mx-4 flex h-8 items-center sm:mx-6 xl:mx-0"
     >
       <div data-featured-scrollbar-track class="relative h-[3px] w-full cursor-pointer rounded-full bg-zinc-800/70">
         <div
