@@ -28,6 +28,18 @@ export interface GalleryProject {
 
 export const PROJECTS: GalleryProject[] = [
   {
+    slug: 'bookmarks',
+    repo: 'bookmark-manager',
+    name: '收藏宇宙 · izaya',
+    tagline: '把多年积累的网站、文章与灵感，安放进一个数字花园。',
+    description: 'Launchpad 风格的个人收藏门户：按主题探索网站、文章与代码仓库，搜索和收藏常用入口。公开链接与原创笔记，原文 Markdown 和图片保存在独立的本地书房。',
+    tags: ['Vite', 'JavaScript', 'Markdown', 'Digital Garden'],
+    accent: '#a5b8fa',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/bookmark-manager',
+  },
+  {
     slug: 'weiqi',
     repo: 'project-weiqi',
     name: '无边围棋 · Edgeless Go',
