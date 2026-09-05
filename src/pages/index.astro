@@ -157,6 +157,17 @@ const featuredNewestFirst = [...featured].reverse();
     .featured-scrollbar:hover {
       opacity: 1;
     }
+    /* 拖拽指示条期间临时关闭卡片吸附，避免浏览器吸附与拖拽互相打架（松手后由脚本平滑吸附归位） */
+    .featured-scroller.is-bar-dragging {
+      scroll-snap-type: none;
+    }
+    .featured-scrollbar.is-dragging,
+    .featured-scrollbar.is-dragging [data-featured-scrollbar-track] {
+      cursor: grabbing;
+    }
+    .featured-scrollbar.is-dragging [data-featured-scrollbar-thumb] {
+      background: var(--color-terminal);
+    }
     .featured-scroller::-webkit-scrollbar {
       height: 6px;
     }
@@ -241,38 +252,81 @@ const featuredNewestFirst = [...featured].reverse();
       window.addEventListener('resize', update);
       update();
 
-      // ---- 指示条交互：点击跳转 + 拖拽滑动 ----
+      // ---- 指示条交互：点击跳转 + 拖拽滑动（拖拽期间关闭吸附，松手平滑归位到最近卡片） ----
       if (track && thumb) {
         const widthPct = () => Math.max((scroller.clientWidth / scroller.scrollWidth) * 100, 8);
         const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1);
+        let dragPct = 8;
+        let dragStartX = 0;
+        let dragStartScroll = 0;
+        let rafId: number | undefined;
+        let snapTimer: number | undefined;
 
-        track.addEventListener('pointerdown', (e) => {
-          if (maxScroll() <= 0) return;
-          dragging = true;
-          track.setPointerCapture(e.pointerId);
-          // 滑块中心先跳到点击处，随后相对该点拖拽
+        const applyScroll = (clientX: number) => {
+          // 每帧重取轨道 rect；滑块位置与指针严格 1:1
           const rect = track.getBoundingClientRect();
-          const pct = widthPct();
-          const target = clamp01(((e.clientX - rect.left) / rect.width - pct / 200) / (1 - pct / 100));
-          scroller.scrollLeft = target * maxScroll();
-          track.dataset.dragStartX = String(e.clientX);
-          track.dataset.dragStartScroll = String(scroller.scrollLeft);
-          showBar();
-        });
-        track.addEventListener('pointermove', (e) => {
-          if (!dragging) return;
-          const rect = track.getBoundingClientRect();
-          const pct = widthPct();
-          const delta = ((e.clientX - Number(track.dataset.dragStartX)) / (rect.width * (1 - pct / 100))) * maxScroll();
-          scroller.scrollLeft = Number(track.dataset.dragStartScroll) + delta;
-        });
+          const delta = ((clientX - dragStartX) / (rect.width * (1 - dragPct / 100))) * maxScroll();
+          scroller.scrollLeft = clamp01((dragStartScroll + delta) / maxScroll()) * maxScroll();
+        };
+
         const endDrag = () => {
           if (!dragging) return;
           dragging = false;
+          bar?.classList.remove('is-dragging');
+          if (rafId !== undefined) {
+            window.cancelAnimationFrame(rafId);
+            rafId = undefined;
+          }
+          // 松手：平滑吸附到最近的卡片吸附位（与 scroll-snap 的落点一致）
+          const nearest = Math.round(scroller.scrollLeft / step()) * step();
+          const target = Math.min(Math.max(nearest, 0), maxScroll());
+          scroller.scrollBy({ left: target - scroller.scrollLeft, behavior });
+          // 吸附动画结束后再恢复原生 snap，避免中途打断
+          if (snapTimer !== undefined) window.clearTimeout(snapTimer);
+          snapTimer = window.setTimeout(() => {
+            scroller.classList.remove('is-bar-dragging');
+            snapTimer = undefined;
+          }, 700);
           scheduleHide();
         };
+
+        track.addEventListener('pointerdown', (e) => {
+          if (maxScroll() <= 0) return;
+          if (snapTimer !== undefined) {
+            window.clearTimeout(snapTimer);
+            snapTimer = undefined;
+          }
+          scroller.classList.add('is-bar-dragging');
+          dragging = true;
+          bar?.classList.add('is-dragging');
+          try {
+            track.setPointerCapture(e.pointerId);
+          } catch {
+            /* 合成事件等无活动指针场景下捕获失败可忽略 */
+          }
+          // 滑块中心先跳到点击处（与原生滚动条一致），随后相对该点拖拽
+          const rect = track.getBoundingClientRect();
+          dragPct = widthPct();
+          const target = clamp01(((e.clientX - rect.left) / rect.width - dragPct / 200) / (1 - dragPct / 100));
+          scroller.scrollLeft = target * maxScroll();
+          dragStartX = e.clientX;
+          dragStartScroll = scroller.scrollLeft;
+          showBar();
+          e.preventDefault();
+        });
+        track.addEventListener('pointermove', (e) => {
+          if (!dragging) return;
+          // rAF 合帧：一帧最多写一次 scrollLeft
+          if (rafId !== undefined) window.cancelAnimationFrame(rafId);
+          const x = e.clientX;
+          rafId = window.requestAnimationFrame(() => {
+            rafId = undefined;
+            applyScroll(x);
+          });
+        });
         track.addEventListener('pointerup', endDrag);
         track.addEventListener('pointercancel', endDrag);
+        track.addEventListener('lostpointercapture', endDrag);
       }
     }
   </script>
