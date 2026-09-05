@@ -25,6 +25,20 @@ export interface GalleryProject {
 }
 
 export const PROJECTS: GalleryProject[] = [
+  // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
+  {
+    slug: 'bof4',
+    repo: 'project-bof4-storyline',
+    name: '不变之物 · BoF IV Memory Atlas',
+    tagline: '以原作四章串联龙与佛乌鲁双线旅程的《龙战士 IV》剧情回忆画廊。',
+    description:
+      '中文《龙战士 IV》全剧情回忆档案：70 个剧情节点（含双结局）、50 处地点、25 位带原作像素头像的人物与 8 段旅途拾遗。可拖动缩放的幻想世界地图支持点击地点与双线路线叠加；按章节和视角浏览、人物与事件互跳、重访同一地点，事件锚点可直接分享（如 /#m01）。内容整理自独立研究底稿，感想与原作事实分开标识，非官方粉丝回顾。',
+    tags: ['React 19', 'Vinext', 'TypeScript', '交互地图'],
+    accent: '#5e9c76',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-bof4-storyline',
+  },
   {
     slug: 'bookmarks',
     repo: 'bookmark-manager',
@@ -36,58 +50,6 @@ export const PROJECTS: GalleryProject[] = [
     featured: true,
     embed: true,
     sourceUrl: 'https://github.com/IIzzaya/bookmark-manager',
-  },
-  {
-    slug: 'weiqi',
-    repo: 'project-weiqi',
-    name: '无边围棋 · Edgeless Go',
-    tagline: '环面拓扑棋盘上的围棋——没有边与角，所有定式全部失效。',
-    description:
-      '19×19 棋盘左右上下相通的环面围棋：四周无限镜面虚影实时同步、可直接点击落子；简单劫 + 数子法终局计算；内置三档 MCTS AI（入门 / 进阶 / 高手）运行于 Web Worker。支持双人与人机、悔棋认输、存档续局、SGF 导出与复盘回放。',
-    tags: ['Vue 3', 'TypeScript', 'Vite', 'MCTS AI', 'Web Worker'],
-    accent: '#9a6bff',
-    featured: true,
-    embed: true,
-    sourceUrl: 'https://github.com/IIzzaya/project-weiqi',
-  },
-  {
-    slug: 'pixel-sails',
-    repo: 'project-3d-pixel',
-    name: 'Pixel Sails · 像素帆船',
-    tagline: '分层切片伪 3D 的像素风航行收集游戏。',
-    description:
-      '程序化体素帆船逐层切片、沿 Y 轴堆叠成 1 体素厚的板层，配合低分辨率帧缓冲最近邻放大，任意旋转角度都保持手绘像素感的伪 3D。完整的航行玩法：风极曲线操舵、打捞货箱与宝箱、礁石与追踪水雷，以及像素海面、船体倒影与尾迹浪花。',
-    tags: ['three.js', 'TypeScript', 'Vite', 'Pixel Art'],
-    accent: '#40e0ff',
-    featured: true,
-    embed: true,
-    sourceUrl: 'https://github.com/IIzzaya/project-3d-pixel',
-  },
-  {
-    slug: 'temple',
-    repo: 'project-temple',
-    name: '木构 MOKUZŌ · 净土堂建筑解构',
-    tagline: '净土寺净土堂木构建筑的交互式 3D 结构解构档案。',
-    description:
-      '依据净土寺净土堂手绘详图复原的交互式建筑研究模型：整体、分层拆解与五类构件（屋面椽架 / 斗栱出挑 / 柱与贯梁 / 格扇板壁 / 台基地栿）均可独立查看，拆解进度连续可调，构件可显隐与点击选择；支持拖动旋转、滚轮缩放、透视/正视/俯视切换、自动旋转与线框模式。参数化几何由 three.js 实时渲染，榫卯与斗栱承托关系按图纸示意表达。',
-    tags: ['React 19', 'three.js', 'TypeScript', 'WebGL'],
-    accent: '#e0a458',
-    featured: true,
-    embed: true,
-    sourceUrl: 'https://github.com/IIzzaya/project-temple',
-  },
-  {
-    slug: 'jelly',
-    repo: 'project-jelly',
-    name: 'Jelly Atelier · 果冻工坊',
-    tagline: '一颗会呼吸的 WebGPU 果冻——拍一下，看它怎么抖。',
-    description:
-      'Three.js WebGPURenderer 实时渲染的交互式果冻玩具：程序化竖纹几何 + 物理透射 / 衰减 / 清漆材质与影棚灯光；CPU 上的阻尼弹簧控制形变、重力积分处理弹跳与地面碰撞，WebGPU 不可用时自动回退 WebGL2。四种果味实时换色、柔软度滑杆调节抖动，空格键拍击、拖动旋转视角，可暂停模拟或重置镜头；遵循 reduced-motion 偏好自动关闭环境动画。',
-    tags: ['React 19', 'three.js', 'WebGPU', 'Vinext'],
-    accent: '#e94b55',
-    featured: true,
-    embed: true,
-    sourceUrl: 'https://github.com/IIzzaya/project-jelly',
   },
   {
     slug: 'qing-font',
@@ -103,16 +65,55 @@ export const PROJECTS: GalleryProject[] = [
     sourceUrl: 'https://github.com/IIzzaya/project-qing-font',
   },
   {
-    slug: 'bof4',
-    repo: 'project-bof4-storyline',
-    name: '不变之物 · BoF IV Memory Atlas',
-    tagline: '以原作四章串联龙与佛乌鲁双线旅程的《龙战士 IV》剧情回忆画廊。',
+    slug: 'jelly',
+    repo: 'project-jelly',
+    name: 'Jelly Atelier · 果冻工坊',
+    tagline: '一颗会呼吸的 WebGPU 果冻——拍一下，看它怎么抖。',
     description:
-      '中文《龙战士 IV》全剧情回忆档案：70 个剧情节点（含双结局）、50 处地点、25 位带原作像素头像的人物与 8 段旅途拾遗。可拖动缩放的幻想世界地图支持点击地点与双线路线叠加；按章节和视角浏览、人物与事件互跳、重访同一地点，事件锚点可直接分享（如 /#m01）。内容整理自独立研究底稿，感想与原作事实分开标识，非官方粉丝回顾。',
-    tags: ['React 19', 'Vinext', 'TypeScript', '交互地图'],
-    accent: '#5e9c76',
+      'Three.js WebGPURenderer 实时渲染的交互式果冻玩具：程序化竖纹几何 + 物理透射 / 衰减 / 清漆材质与影棚灯光；CPU 上的阻尼弹簧控制形变、重力积分处理弹跳与地面碰撞，WebGPU 不可用时自动回退 WebGL2。四种果味实时换色、柔软度滑杆调节抖动，空格键拍击、拖动旋转视角，可暂停模拟或重置镜头；遵循 reduced-motion 偏好自动关闭环境动画。',
+    tags: ['React 19', 'three.js', 'WebGPU', 'Vinext'],
+    accent: '#e94b55',
     featured: true,
     embed: true,
-    sourceUrl: 'https://github.com/IIzzaya/project-bof4-storyline',
+    sourceUrl: 'https://github.com/IIzzaya/project-jelly',
+  },
+  {
+    slug: 'temple',
+    repo: 'project-temple',
+    name: '木构 MOKUZŌ · 净土堂建筑解构',
+    tagline: '净土寺净土堂木构建筑的交互式 3D 结构解构档案。',
+    description:
+      '依据净土寺净土堂手绘详图复原的交互式建筑研究模型：整体、分层拆解与五类构件（屋面椽架 / 斗栱出挑 / 柱与贯梁 / 格扇板壁 / 台基地栿）均可独立查看，拆解进度连续可调，构件可显隐与点击选择；支持拖动旋转、滚轮缩放、透视/正视/俯视切换、自动旋转与线框模式。参数化几何由 three.js 实时渲染，榫卯与斗栱承托关系按图纸示意表达。',
+    tags: ['React 19', 'three.js', 'TypeScript', 'WebGL'],
+    accent: '#e0a458',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-temple',
+  },
+  {
+    slug: 'pixel-sails',
+    repo: 'project-3d-pixel',
+    name: 'Pixel Sails · 像素帆船',
+    tagline: '分层切片伪 3D 的像素风航行收集游戏。',
+    description:
+      '程序化体素帆船逐层切片、沿 Y 轴堆叠成 1 体素厚的板层，配合低分辨率帧缓冲最近邻放大，任意旋转角度都保持手绘像素感的伪 3D。完整的航行玩法：风极曲线操舵、打捞货箱与宝箱、礁石与追踪水雷，以及像素海面、船体倒影与尾迹浪花。',
+    tags: ['three.js', 'TypeScript', 'Vite', 'Pixel Art'],
+    accent: '#40e0ff',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-3d-pixel',
+  },
+  {
+    slug: 'weiqi',
+    repo: 'project-weiqi',
+    name: '无边围棋 · Edgeless Go',
+    tagline: '环面拓扑棋盘上的围棋——没有边与角，所有定式全部失效。',
+    description:
+      '19×19 棋盘左右上下相通的环面围棋：四周无限镜面虚影实时同步、可直接点击落子；简单劫 + 数子法终局计算；内置三档 MCTS AI（入门 / 进阶 / 高手）运行于 Web Worker。支持双人与人机、悔棋认输、存档续局、SGF 导出与复盘回放。',
+    tags: ['Vue 3', 'TypeScript', 'Vite', 'MCTS AI', 'Web Worker'],
+    accent: '#9a6bff',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-weiqi',
   },
 ];
