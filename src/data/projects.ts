@@ -66,4 +66,17 @@ export const PROJECTS: GalleryProject[] = [
     embed: true,
     sourceUrl: 'https://github.com/IIzzaya/project-temple',
   },
+  {
+    slug: 'jelly',
+    repo: 'project-jelly',
+    name: 'Jelly Atelier · 果冻工坊',
+    tagline: '一颗会呼吸的 WebGPU 果冻——拍一下，看它怎么抖。',
+    description:
+      'Three.js WebGPURenderer 实时渲染的交互式果冻玩具：程序化竖纹几何 + 物理透射 / 衰减 / 清漆材质与影棚灯光；CPU 上的阻尼弹簧控制形变、重力积分处理弹跳与地面碰撞，WebGPU 不可用时自动回退 WebGL2。四种果味实时换色、柔软度滑杆调节抖动，空格键拍击、拖动旋转视角，可暂停模拟或重置镜头；遵循 reduced-motion 偏好自动关闭环境动画。',
+    tags: ['React 19', 'three.js', 'WebGPU', 'Vinext'],
+    accent: '#e94b55',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-jelly',
+  },
 ];
