@@ -13,8 +13,7 @@ const posts = (await getCollection('blog')).sort(
 );
 const latest = posts.slice(0, 5);
 const featured = PROJECTS.filter((p) => p.featured);
-// projects.ts 按加入时间先后追加，倒序后最新的项目排在滚动区最左侧
-const featuredNewestFirst = [...featured].reverse();
+// projects.ts 按从新到旧排序，过滤后顺序保持不变，最新的项目排在滚动区最左侧
 ---
 
 <BaseLayout>
@@ -87,7 +86,7 @@ const featuredNewestFirst = [...featured].reverse();
       tabindex="0"
       class="featured-scroller -mx-4 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-4 px-4 pb-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terminal/40 sm:-mx-6 sm:scroll-px-6 sm:px-6 xl:-mx-16 xl:scroll-px-16 xl:px-16"
     >
-      {featuredNewestFirst.map((p) => <ProjectCard compact {...p} playLabel="Play" sourceLabel="Source Code" />)}
+      {featured.map((p) => <ProjectCard compact {...p} playLabel="Play" sourceLabel="Source Code" />)}
     </div>
 
     <!-- 自定义滚动指示条：与卡片内容区等宽（base/sm 抵消主栏 padding；xl 卡片静止位即栏缘，无需内缩），悬停/滚动/拖动时淡入；
