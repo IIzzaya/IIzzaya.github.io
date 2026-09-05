@@ -8,7 +8,6 @@ interface Props {
   tags: string[];
   accent: string;
   sourceUrl: string;
-  screenshot?: string;
   /** 紧凑模式：主页横向滚动卡片（固定尺寸 + 截断长文案 + snap 对齐） */
   compact?: boolean;
   /** 播放按钮文案（默认「开始玩」） */
@@ -24,7 +23,6 @@ const {
   tags,
   accent,
   sourceUrl,
-  screenshot,
   compact = false,
   playLabel = '开始玩',
   sourceLabel = '源码',
@@ -45,21 +43,6 @@ const {
     aria-hidden="true"
   >
   </div>
-
-  {
-    screenshot && (
-      <a href={`/projects/${slug}/`} class="block overflow-hidden border-b border-zinc-800" tabindex="-1" aria-hidden="true">
-        <img
-          src={screenshot}
-          alt={`${name} 截图`}
-          width="1200"
-          height="630"
-          loading="lazy"
-          class="aspect-[1200/630] w-full object-cover opacity-85 transition-opacity group-hover:opacity-100"
-        />
-      </a>
-    )
-  }
 
   <div class="flex flex-1 flex-col p-5">
     <h3 class="text-lg font-semibold text-zinc-100">

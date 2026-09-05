@@ -22,8 +22,6 @@ export interface GalleryProject {
   /** 是否生成 /projects/<slug>/ iframe 嵌入路由 */
   embed: boolean;
   sourceUrl: string;
-  /** 画廊卡片配图（建议 1200×630），路径相对 public/ */
-  screenshot?: string;
 }
 
 export const PROJECTS: GalleryProject[] = [
@@ -116,6 +114,5 @@ export const PROJECTS: GalleryProject[] = [
     featured: true,
     embed: true,
     sourceUrl: 'https://github.com/IIzzaya/project-bof4-storyline',
-    screenshot: '/assets/images/projects/bof4.png',
   },
 ];

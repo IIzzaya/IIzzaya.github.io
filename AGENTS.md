@@ -166,11 +166,10 @@ jobs:
   featured: true,                    // 是否主页精选
   embed: true,                       // true = 生成 /projects/foo/ iframe 路由
   sourceUrl: 'https://github.com/IIzzaya/project-foo',
-  screenshot: '/assets/images/projects/foo.png', // 可选，画廊卡片配图
 }
 ```
 
-画廊页 `/projects/` 与嵌入路由 `/projects/[slug]/` 均由此数据文件驱动；`embed: true` 的项目自动获得 iframe 路由（顶栏保留主站导航 + 「新窗口打开」「查看源码」按钮）。卡片截图建议 1200×630。
+画廊页 `/projects/` 与嵌入路由 `/projects/[slug]/` 均由此数据文件驱动；`embed: true` 的项目自动获得 iframe 路由（顶栏保留主站导航 + 「新窗口打开」「查看源码」按钮）。
 
 ### 第 4 步：验证
 
