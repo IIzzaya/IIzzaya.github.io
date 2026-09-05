@@ -27,6 +27,7 @@
 | `IIzzaya/project-3d-pixel` | Pixel Sails（three.js 像素帆船游戏） | `https://iizzaya.github.io/project-3d-pixel/` |
 | `IIzzaya/project-temple` | 木构 MOKUZŌ（React+three.js 建筑解构） | `https://iizzaya.github.io/project-temple/` |
 | `IIzzaya/project-jelly` | Jelly Atelier（React+three.js WebGPU 果冻玩具，vinext） | `https://iizzaya.github.io/project-jelly/` |
+| `IIzzaya/project-qing-font` | 清骨隸 Qinggu Li（React+vinext 隸書字體研究室） | `https://iizzaya.github.io/project-qing-font/` |
 
 子项目仓库与主站**完全独立**：各自源码、各自 Actions 管线。主站只通过 **iframe** 嵌入其 Pages 产物（同域名，天然同源，localStorage 等均可用）。
 

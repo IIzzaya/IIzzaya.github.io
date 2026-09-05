@@ -79,4 +79,17 @@ export const PROJECTS: GalleryProject[] = [
     embed: true,
     sourceUrl: 'https://github.com/IIzzaya/project-jelly',
   },
+  {
+    slug: 'qing-font',
+    repo: 'project-qing-font',
+    name: '清骨隸 · Qinggu Li',
+    tagline: '取意金农隶书的现代隶意字体与简繁互动字室。',
+    description:
+      '基于 Make Me a Hanzi / Arphic 笔画骨架重新构建厚横、瘦直与方折轮廓的衍生字体（非原迹复刻）：交付简繁双版 TTF/WOFF2，各覆盖底本 1,000 字全文并附可下载字体包与授权。网页研究室支持自由试字（简繁切换、字级字距、格线、直排、深浅底）、与 TTF 同源的逐笔播放 / 拖动 / 原始骨架叠合比较，以及简繁《千字文》全文、字格、寻字与收字统计。',
+    tags: ['React 19', 'Vinext', 'TypeScript', '字体设计'],
+    accent: '#5e8caa',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-qing-font',
+  },
 ];
