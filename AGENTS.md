@@ -18,13 +18,15 @@
 - 主页名字轮换列表：`izaya / イザヤ / IIzzaya`（配置于 `src/data/profile.ts`）
 - 终端页头提示符：`iizzaya@github:~$`
 
-## 2. 仓库拓扑（三仓库模型）
+## 2. 仓库拓扑（多仓库模型）
 
 | 仓库 | 内容 | 部署地址 |
 | --- | --- | --- |
 | `IIzzaya/IIzzaya.github.io` | Astro 主站（本仓库） | `https://iizzaya.github.io` |
 | `IIzzaya/project-weiqi` | 无边围棋（Vue3+Vite+TS，环面围棋） | `https://iizzaya.github.io/project-weiqi/` |
 | `IIzzaya/project-3d-pixel` | Pixel Sails（three.js 像素帆船游戏） | `https://iizzaya.github.io/project-3d-pixel/` |
+| `IIzzaya/project-temple` | 木构 MOKUZŌ（React+three.js 建筑解构） | `https://iizzaya.github.io/project-temple/` |
+| `IIzzaya/project-jelly` | Jelly Atelier（React+three.js WebGPU 果冻玩具，vinext） | `https://iizzaya.github.io/project-jelly/` |
 
 子项目仓库与主站**完全独立**：各自源码、各自 Actions 管线。主站只通过 **iframe** 嵌入其 Pages 产物（同域名，天然同源，localStorage 等均可用）。
 
