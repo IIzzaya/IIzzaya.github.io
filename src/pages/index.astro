@@ -117,8 +117,16 @@ const featuredNewestFirst = [...featured].reverse();
     .featured-scroller {
       scrollbar-width: thin;
       scrollbar-color: var(--color-zinc-700) transparent;
-      -webkit-mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 20px), transparent);
-      mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 20px), transparent);
+      /* 渐隐宽度 12px 必须小于 px-4 的 16px 留白，否则会盖住静止卡片的边框 */
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
+      mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
+    }
+    /* xl 起卡片与内容栏左缘对齐、无留白，关闭渐隐避免遮挡静止卡片边框 */
+    @media (min-width: 80rem) {
+      .featured-scroller {
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
     }
     .featured-scroller::-webkit-scrollbar {
       height: 6px;
