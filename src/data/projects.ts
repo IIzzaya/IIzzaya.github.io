@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'holo-card',
+    repo: 'project-shiny-card',
+    name: 'HOLO · 镭射卡片实验室',
+    tagline: '可倾斜、可翻面的镭射卡片展台——GPU 蚀刻虹彩与五层视差。',
+    description:
+      '原生 WebGL 单画布合成的卡片材质实验室：五个虚拟深度平面（凹入底纹、蚀刻纹饰、透明角色、技能文字、固定边框）按观察方向分层采样形成 2.5D 视差，镭射色带随视角、角色色彩与局部浮雕实时变化，并限制在角色透明遮罩与金属纹理之内。烈空坐、喷火龙、洛奇亚、梦幻四张配色各异的卡片，提供原色镭射、棱镜虹彩、极光流彩三种材质与强度、层深调节；点击翻面查看原创哑光卡背，支持键盘调角与 reduced-motion 偏好。',
+    tags: ['React 19', 'WebGL', 'Vinext', 'TypeScript'],
+    accent: '#d9a441',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-shiny-card',
+  },
+  {
     slug: 'balance',
     repo: 'project-balance',
     name: 'Balance Lab · 球板平衡实验室',
