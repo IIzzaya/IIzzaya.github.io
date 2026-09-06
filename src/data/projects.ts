@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'fluid-lab',
+    repo: 'project-interactive-css',
+    name: 'Fluid Lab · CSS 响应式实验室',
+    tagline: '拖动滑块、点击示例，直观感受 clamp() / min() / max() 的流动响应式。',
+    description:
+      '交互式 CSS 流式尺寸实验室：Clamp Playground 提供最小值 / 最大值参考线、尺寸基线与实时曲线，拖动 320–1600px 模拟视口即可观看 clamp(112px, 8px + 15vw, 176px) 的真实计算结果；六张相互独立的示例卡片在手机与桌面宽度间 ping-pong 循环演示日常配方，支持键盘操作、减少动态效果偏好与一键复制可用 CSS。原生 JavaScript、CSS 与 SVG 实现，无前端框架。',
+    tags: ['Vanilla JS', 'CSS', 'SVG', 'Vite'],
+    accent: '#7963dc',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-interactive-css',
+  },
+  {
     slug: 'wire-frame',
     repo: 'project-wire-frame',
     name: 'Perpetual · 生成机械实验台',
