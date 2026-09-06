@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'balance',
+    repo: 'project-balance',
+    name: 'Balance Lab · 球板平衡实验室',
+    tagline: '真实运动方程驱动的双轴球板自平衡仿真——调 PID，看小球追上目标。',
+    description:
+      '物理驱动的双轴球板平衡控制实验室：实心球滚动动力学以 1/240 秒 RK4 积分推进，PID 闭环带积分抗饱和与轨迹加速度前馈，执行器为二阶惯性模型。定点、圆形、八字、花瓣与手动五种目标模式，可实时调节 PID 增益、注入速度扰动、切换开环/闭环；三维正交投影视窗与俯视图、位置误差—速度误差相图、倾角与控制力矩遥测曲线，支持 30 秒历史回看与 CSV 导出。',
+    tags: ['React 19', 'Vinext', 'TypeScript', 'PID 控制'],
+    accent: '#38bdf8',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-balance',
+  },
+  {
     slug: 'fluid-lab',
     repo: 'project-interactive-css',
     name: 'Fluid Lab · CSS 响应式实验室',
