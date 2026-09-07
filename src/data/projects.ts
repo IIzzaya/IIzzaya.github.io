@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'halftone',
+    repo: 'project-half-tone',
+    name: 'HALFTONE · 夜行',
+    tagline: '雨夜行车视角的实时半色调 / 像素 / 体素渲染实验。',
+    description:
+      '根据雨夜出租车参考影像风格重建的实时 3D 夜驾实验：真实透视摄像机沿程序化街区巡航，实例化灯窗与车流、驾驶舱、雨丝与湿路反光构成夜景；TSL 节点后处理把画面实时转化为半色调网点、像素采样或体素街区三种风格，WebGPU 与 WebGL2 共用同一套节点图。拖动环顾、滚轮前进，可调节颗粒尺寸、光晕、曝光、雨量、速度、驾驶舱与配色，四个预设一键切换，保存画面导出 PNG。',
+    tags: ['React 19', 'three.js', 'WebGPU', 'TSL', 'Vinext'],
+    accent: '#d8ee80',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-half-tone',
+  },
+  {
     slug: 'holo-card',
     repo: 'project-shiny-card',
     name: 'HOLO · 镭射卡片实验室',
