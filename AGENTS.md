@@ -29,6 +29,7 @@
 | `IIzzaya/project-jelly` | Jelly Atelier（React+three.js WebGPU 果冻玩具，vinext） | `https://iizzaya.github.io/project-jelly/` |
 | `IIzzaya/project-qing-font` | 清骨隸 Qinggu Li（React+vinext 隶书字体研究室） | `https://iizzaya.github.io/project-qing-font/` |
 | `IIzzaya/project-color-square` | COLOR SQUARE 色彩方阵（React+vinext 六色几何生成动画） | `https://iizzaya.github.io/project-color-square/` |
+| `IIzzaya/project-brush` | Brush Atlas 笔刷图集（React+vinext Canvas 2D 生成笔刷绘画） | `https://iizzaya.github.io/project-brush/` |
 | `IIzzaya/bookmark-manager` | 收藏宇宙（Vite 静态书签门户，本地私人归档独立） | `https://iizzaya.github.io/bookmark-manager/` |
 
 子项目仓库与主站**完全独立**：各自源码、各自 Actions 管线。主站只通过 **iframe** 嵌入其 Pages 产物（同域名，天然同源，localStorage 等均可用）。
