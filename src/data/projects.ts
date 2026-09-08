@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'brush-atlas',
+    repo: 'project-brush',
+    name: 'Brush Atlas · 笔刷图集',
+    tagline: '三种生成笔刷的绘画游乐场——一笔画出纽约地铁、街道小人或 Gunpla 零件。',
+    description:
+      '按参考视频重建的生成式绘画工作台：NYC subway 笔刷沿笔迹铺开平行线路、站点、换乘标记与真实纽约站名，列车光标在线路上持续移动；little figures 笔刷沿手势排列步行、站立、举手、轮椅与宠物等建筑立面小人，带轻微动态；Gunpla components 笔刷程序化生成原创装甲零件、浇口连接与板件编号。笔迹经弧长重采样，种子随机数保证同一笔画稳定重现，静态画层缓存、列车单独绘制、小人以 12 Hz 更新。支持鼠标、触屏与触控笔压力输入，三种笔刷可叠加，自动构图、随机变体、网格开关、平移缩放与撤销重做，导出 2400 × 1968 PNG。',
+    tags: ['React 19', 'Vinext', 'TypeScript', 'Canvas 2D'],
+    accent: '#377b59',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-brush',
+  },
+  {
     slug: 'lucent-pocket',
     repo: 'project-plexiglas-case',
     name: 'LUCENT · Pocket / 01',
