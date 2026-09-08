@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'color-square',
+    repo: 'project-color-square',
+    name: 'COLOR SQUARE · 色彩方阵',
+    tagline: '六色几何拼贴的生成式矢量动画——方形、八边形与箭头的无限运动。',
+    description:
+      '从六色几何拼贴参考图延展的实时矢量动画：确定性种子算法把 1×1、2×2、3×3 三种图块无缝铺满任意视口，箭头循环平移、圆点呼吸缩放、八边形错峰旋转，90° 旋转首尾轮廓重合、循环无跳帧；动画经 Web Animations API 直接驱动 SVG 元素，不经过 React 每帧重绘。空格暂停、R 重新构图、F 全屏沉浸，0.25×–2× 速度调节；遵循系统减少动态效果偏好，切后台自动暂停、回前台按原状态恢复。',
+    tags: ['React 19', 'SVG', 'Web Animations API', 'Vinext'],
+    accent: '#00f344',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-color-square',
+  },
+  {
     slug: 'halftone',
     repo: 'project-half-tone',
     name: 'HALFTONE · 夜行',
