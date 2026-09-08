@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'lucent-pocket',
+    repo: 'project-plexiglas-case',
+    name: 'LUCENT · Pocket / 01',
+    tagline: '透明亚克力掌机的交互式 3D 材质实验室——转动、拆解、探索。',
+    description:
+      '根据参考视频重建的透明亚克力掌机材质实验室：程序化装配圆角前后盖、抛光边缘、螺丝与金属垫圈，深绿 PCB 带布线、过孔、丝印与 InstancedMesh 阻容元件，动态单色 LCD 实时显示示波数据；Three.js WebGPURenderer 渲染并自动回退 WebGL2。六种外壳颜色与自定义染色，透光率、粗糙度、折射率与光学厚度实时可调，六层平滑拆解、尺寸比例控制，日光 / 暗室 / 暖光摄影棚三种布光与曝光调节，支持拖拽旋转、四标准视角、自动旋转与 PNG 导出。',
+    tags: ['React 19', 'three.js', 'WebGPU', 'Vinext'],
+    accent: '#e8a363',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-plexiglas-case',
+  },
+  {
     slug: 'color-square',
     repo: 'project-color-square',
     name: 'COLOR SQUARE · 色彩方阵',
