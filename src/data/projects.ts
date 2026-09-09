@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'fashion-post',
+    repo: 'project-fashion-post',
+    name: '图形之间 · FORM & SEED',
+    tagline: '一个种子生成一张几何海报——可复现的现代主义图案工作台。',
+    description:
+      '确定性随机几何海报生成器：FNV-1a 哈希与 Mulberry32 伪随机流分别控制布局、色彩与细节，整数网格装箱保证模块无重叠遗漏，相同算法版本、种子与设置输出字节一致的 SVG。三种构图（弧线积木、节奏拼贴、秩序练习）× 五套配色 × 四类元素自由组合，支持自定义色彩配方、密度与画幅调节、纸张颗粒与海报落款；SVG 矢量导出与 1–4 倍 PNG 导出（竖幅最大 3600 × 5040），复制复现链接即可跨设备还原全部参数，底部衍生种子一键切换变体。',
+    tags: ['React 19', 'TypeScript', 'SVG', 'Vinext'],
+    accent: '#F05B0B',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-fashion-post',
+  },
+  {
     slug: 'pixel-frag',
     repo: 'project-pixel-frag-model',
     name: 'FRAG. · 像素英雄档案',
