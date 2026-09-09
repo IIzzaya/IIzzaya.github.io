@@ -27,6 +27,19 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'pixel-frag',
+    repo: 'project-pixel-frag-model',
+    name: 'FRAG. · 像素英雄档案',
+    tagline: '会旋转、解构与重组的三维像素勇者——参考影像的程序化体素再创作。',
+    description:
+      '依据 @ARTOFSULLY 参考影像重建的交互式三维像素英雄档案：头、身、四肢与剑盾八个部件建模为仅保留表面体素的单个 InstancedMesh，Three.js WebGPU 渲染、不可用时自动回退 WebGL 2 并显示实际后端。之勇者 / 暗影双形态一键切换，1.8 秒碎片解构与重组动画，碎片滑杆控制真实体素位置，复古像素模式降低渲染分辨率同时保留清晰像素边缘。支持环绕拖拽、缩放、自动旋转调速、漂浮精灵开关、全屏展示与透明 PNG 快照，点选画布后亦可用方向键与 +/−/Home 控制视角。',
+    tags: ['React 19', 'three.js', 'WebGPU', 'Vinext'],
+    accent: '#d5f880',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-pixel-frag-model',
+  },
+  {
     slug: 'brush-atlas',
     repo: 'project-brush',
     name: 'Brush Atlas · 笔刷图集',
