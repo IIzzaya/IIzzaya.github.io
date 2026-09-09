@@ -27,6 +27,45 @@ export interface GalleryProject {
 export const PROJECTS: GalleryProject[] = [
   // 顺序即画廊展示顺序：最新在前，从新到旧（新增项目请插到数组最前面）
   {
+    slug: 'cube-word',
+    repo: 'project-cube-word',
+    name: '字方 · Cube Type',
+    tagline: '把文字变成立方体的等距文字实验室——汉字、中英混排与即时预览。',
+    description:
+      '参考 CUBE Type 重建的支持汉字的等距文字实验室：每行 12 个 Unicode 字素、最多 12 行的网格编辑器把文字排进立方体矩阵，左／右俯视、左右立面与平面五种构图，方块间距、硬阴影、空白方块与阶梯排列自由调节，十二套配色加背景、三面、文字、描边自定义，1:1／16:9／9:16 画布、透明背景、缩放与撤销重做。纯 SVG 等距投影渲染（不依赖 WebGL），OpenType 解析随站分发的 Noto Sans CJK SC Bold 字形转成路径，预览与导出共用同一渲染器；无字形字符明确提示并阻止导出。六个示例一键载入，分享链接包含完整作品参数，支持 SVG 矢量与最长边 3600px PNG 导出。',
+    tags: ['React 19', 'Vinext', 'TypeScript', 'SVG', 'OpenType'],
+    accent: '#b8eb80',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-cube-word',
+  },
+  {
+    slug: 'mc275',
+    repo: 'project-macintosh',
+    name: 'MC275 · Object Archive',
+    tagline: '从每一个角度，观察 McIntosh MC275——金属、玻璃与光线的交互式三维展厅。',
+    description:
+      '依据参考照片参数化重建的 McIntosh MC275 功放交互式三维展厅：三只变压器罩、四支 KT88 功率管与七支小信号管、倾斜控制面板、滚花旋钮与接线端子全部程序化建模，PBR 金属、烤漆 clearcoat 与真实折射玻璃经 HDR 摄影棚反射、PMREM 与 ACES 色调映射渲染，约 37.9 万三角形批处理到 92 次绘制。360° 旋转缩放、五种预设视角、摄影棚 / 暖光 / 夜幕三种照明，曝光与灯丝辉光实时可调，附原始参考图对照；WebGPU 不可用时自动回退 WebGL 2。',
+    tags: ['React 19', 'three.js', 'WebGPU', 'PBR', 'Vinext'],
+    accent: '#c6d7af',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-macintosh',
+  },
+  {
+    slug: 'luma-pixel',
+    repo: 'project-3d-anim-pixel',
+    name: 'LUMA · 像素精灵工作台',
+    tagline: '一颗振翅悬浮的像素光球——可旋转、可调参的实时 3D 精灵工作台。',
+    description:
+      '依据参考影像程序化重建的蓝色光球精灵工作台：参数化弯曲翅膜几何与 Voronoi 翅脉、四翼关节振翅、悬浮粒子和球面视角渐变，Three.js WebGPURenderer 全 TSL 材质渲染，WebGPU 不可用时自动回退 WebGL 2。后处理链把实时 3D 画面逐帧转化为辉光、像素 UV 采样 + RGB 色散、色调映射与 4×4 Bayer 有序抖色 / 色阶量化 / 动态颗粒。拖动旋转、滚轮缩放，空格播放暂停、F 沉浸模式；像素尺寸、抖色、色阶、辉光、色散、颗粒、精灵色彩与对象动画全部实时可调，四套预设一键切换，「查看原始 3D」关闭像素化保留造型，导出当前帧 PNG。',
+    tags: ['React 19', 'three.js', 'WebGPU', 'TSL', 'Vinext'],
+    accent: '#80eaff',
+    featured: true,
+    embed: true,
+    sourceUrl: 'https://github.com/IIzzaya/project-3d-anim-pixel',
+  },
+  {
     slug: 'fashion-post',
     repo: 'project-fashion-post',
     name: '图形之间 · FORM & SEED',
