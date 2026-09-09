@@ -32,6 +32,7 @@
 | `IIzzaya/project-brush` | Brush Atlas 笔刷图集（React+vinext Canvas 2D 生成笔刷绘画） | `https://iizzaya.github.io/project-brush/` |
 | `IIzzaya/project-plexiglas-case` | LUCENT · Pocket / 01（React+vinext+three.js WebGPU 透明亚克力掌机材质实验室，ref.mp4 走 LFS） | `https://iizzaya.github.io/project-plexiglas-case/` |
 | `IIzzaya/project-pixel-frag-model` | FRAG. 像素英雄档案（React+vinext+three.js WebGPU/WebGL 程序化体素英雄展示，ref.mp4 参考素材） | `https://iizzaya.github.io/project-pixel-frag-model/` |
+| `IIzzaya/project-fashion-post` | 图形之间 · FORM & SEED（React+vinext SVG 确定性几何海报生成工作台，studio/ 子目录布局 + SSR 冻结） | `https://iizzaya.github.io/project-fashion-post/` |
 | `IIzzaya/bookmark-manager` | 收藏宇宙（Vite 静态书签门户，本地私人归档独立） | `https://iizzaya.github.io/bookmark-manager/` |
 
 子项目仓库与主站**完全独立**：各自源码、各自 Actions 管线。主站只通过 **iframe** 嵌入其 Pages 产物（同域名，天然同源，localStorage 等均可用）。
