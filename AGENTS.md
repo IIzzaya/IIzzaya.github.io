@@ -35,6 +35,7 @@
 | `IIzzaya/project-fashion-post` | 图形之间 · FORM & SEED（React+vinext SVG 确定性几何海报生成工作台，studio/ 子目录布局 + SSR 冻结） | `https://iizzaya.github.io/project-fashion-post/` |
 | `IIzzaya/project-macintosh` | MC275 · Object Archive（React+vinext+three.js WebGPU/WebGL 功放交互展厅，web/ 子目录布局 + SSR 冻结） | `https://iizzaya.github.io/project-macintosh/` |
 | `IIzzaya/project-cube-word` | 字方 · Cube Type（React+vinext 汉字等距立方体文字实验室，根目录布局 + SSR 冻结） | `https://iizzaya.github.io/project-cube-word/` |
+| `IIzzaya/project-3d-anim-pixel` | LUMA · 像素精灵工作台（React+vinext+three.js WebGPU/WebGL 像素精灵渲染工作台，ref.mp4 走 LFS） | `https://iizzaya.github.io/project-3d-anim-pixel/` |
 | `IIzzaya/bookmark-manager` | 收藏宇宙（Vite 静态书签门户，本地私人归档独立） | `https://iizzaya.github.io/bookmark-manager/` |
 
 子项目仓库与主站**完全独立**：各自源码、各自 Actions 管线。主站只通过 **iframe** 嵌入其 Pages 产物（同域名，天然同源，localStorage 等均可用）。
